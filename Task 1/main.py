@@ -1,5 +1,6 @@
-from system import LibrarySystem
+from system import LibrarySystem  # Import LibrarySystem from system module
 
-if __name__ == "__main__":
+if __name__ == "__main__":  
     system = LibrarySystem()
-    system.run()
+
+    system.run() # Start and run the main library system
