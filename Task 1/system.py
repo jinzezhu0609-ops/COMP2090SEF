@@ -5,20 +5,20 @@ from seat import Seat
 from reservation import Reservation
 from reminder import Reminder
 
-class LibrarySystem:
+class LibrarySystem: # Main library seat reservation system
     
     def __init__(self):
-        self.users = []
-        self.seats = []
+        self.users = [] # List of all registered users
+        self.seats = [] # List of all seats in the library 
         self.reservations = []
         self.current_user = None
         self._init_test_data()
 
-    def _init_test_data(self):
+    def _init_test_data(self): # Create seats 1 to 5 for testing 
         self.seats = Seat.create_multiple(1, 5)
 
     @staticmethod
-    def bubble_sort_seats(seats):
+    def bubble_sort_seats(seats): # Sort seats by seat_id using bubble sort
         arr = seats.copy()
         n = len(arr)
         for i in range(n-1):
@@ -28,7 +28,7 @@ class LibrarySystem:
         return arr
 
     @staticmethod
-    def insertion_sort_reservations(reservations):
+    def insertion_sort_reservations(reservations): # Sort reservations by start time using insertion sort
         arr = reservations.copy()
         for i in range(1, len(arr)):
             key = arr[i]
@@ -40,7 +40,7 @@ class LibrarySystem:
         return arr
 
     @staticmethod
-    def selection_sort_users(users):
+    def selection_sort_users(users): # Sort users by username using selection sort
         arr = users.copy()
         n = len(arr)
         for i in range(n):
@@ -51,11 +51,12 @@ class LibrarySystem:
             arr[i], arr[min_idx] = arr[min_idx], arr[i]
         return arr
 
-    def register(self, role):
+    def register(self, role): # Register a new user (Customer or Admin)
         username = input("Enter username: ").strip()
-        if any(u.username == username for u in self.users):
-            print("Username already exists!")
-            return
+        for user in self.users:
+            if user.username == username:
+                print("Username already exists!")
+                return
         password = input("Enter password: ").strip()
         if role == "customer":
             user = Customer(username, password)
@@ -66,7 +67,7 @@ class LibrarySystem:
         self.users.append(user)
         print(f"{role} registered successfully! Please log in.")
 
-    def login(self):
+    def login(self): # User login with username and password
         username = input("Username: ").strip()
         password = input("Password: ").strip()
         for user in self.users:
@@ -77,20 +78,20 @@ class LibrarySystem:
         print("Invalid username or password.")
         return False
 
-    def logout(self):
+    def logout(self): # Log out current user
         self.current_user = None
         print("Logged out.")
 
-    def show_all_seats(self):
+    def show_all_seats(self): # Display all seats sorted by seat_id
         sorted_seats = self.bubble_sort_seats(self.seats)
         print("\nCurrent seat status (bubble sort demo):")
         for seat in sorted_seats:
             print(seat)
 
-    def find_available_seats(self):
+    def find_available_seats(self): # Return list of available seats
         return [s for s in self.seats if s.is_available]
 
-    def reserve_seat(self, customer):
+    def reserve_seat(self, customer): # Allow customer to reserve an available seat
         available = self.find_available_seats()
         if not available:
             print("No available seats at the moment.")
@@ -140,7 +141,7 @@ class LibrarySystem:
         self.reservations.append(reservation)
         print(f"Reservation successful! \n{reservation}")
 
-    def release_seat(self, customer):
+    def release_seat(self, customer): # Release a reverved seat
         my_res = [r for r in self.reservations if r.user == customer]
         if not my_res:
             print("You have no reservations.")
@@ -166,7 +167,7 @@ class LibrarySystem:
             self.reservations.remove(res)
         print(f"Seat {seat.seat_id} released.")
 
-    def show_my_reservations(self, customer):
+    def show_my_reservations(self, customer): # Show reservations for the current customer
         my_res = [r for r in self.reservations if r.user == customer]
         if not my_res:
             print("You have no reservations.")
@@ -178,7 +179,7 @@ class LibrarySystem:
             status = "Active" if r.is_active() else "Expired"
             print(f"{r} [{status}]")
 
-    def show_all_reservations(self):
+    def show_all_reservations(self): # Admin: show all reservations
         if not self.reservations:
             print("No reservation records.")
             return
@@ -188,7 +189,7 @@ class LibrarySystem:
             status = "Active" if r.is_active() else "Expired"
             print(f"{r} [{status}]")
 
-    def admin_send_reminder(self):
+    def admin_send_reminder(self): # Send reminders for upcoming reservations 
         upcoming = [r for r in self.reservations if r.is_active() and 0 < r.time_to_start() <= 1800]
         if not upcoming:
             print("No upcoming reservations.")
@@ -198,13 +199,13 @@ class LibrarySystem:
             print(f"  {r.user.username}: seat {r.seat.seat_id} starts at {r.start_time.strftime('%H:%M')}")
         print("Reminders sent.")
 
-    def add_seat(self):
+    def add_seat(self): # Add a new seat 
         new_id = max((s.seat_id for s in self.seats), default=0) + 1
         seat = Seat(new_id)
         self.seats.append(seat)
         print(f"New seat {new_id} added.")
 
-    def delete_seat(self):
+    def delete_seat(self): # Delete an available seat
         self.show_all_seats()
         try:
             seat_id = int(input("Enter seat number to delete: "))
@@ -226,7 +227,7 @@ class LibrarySystem:
         for msg in msgs:
             print(msg)
 
-    def run(self):
+    def run(self): # Main program loop
         while True:
             if self.current_user is None:
                 print("\n===== Library Seat Reservation System =====")
@@ -282,4 +283,5 @@ class LibrarySystem:
                             print(f"  {u.username} ({u.role})")
                     else:
                         print("Invalid command.")
+
                 self.check_all_reminders()
