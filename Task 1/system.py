@@ -21,50 +21,6 @@ class LibrarySystem: # Main library seat reservation system
     def _init_test_data(self): # Create seats 1 to 5 for testing 
         self.seats = Seat.create_multiple(1, 5)
 
-    def load_users_from_json(self):
-        """Load all users from the json file into system memoey"""
-        if not os.path.exists(DATA_FILE):
-            print("No user data found, starting fresh.")
-            return
-            
-        try:
-            with open(DATA_FILE, 'r', encoding='utf-8') as f:
-                user_data_list = json.load(f)
-                
-            self.users = [] # Clear existing users to prevent duplicates
-            
-            for data in user_data_list:
-                if data['role'] == "Customer":
-                    user = Customer(data['username'], data['password'])
-                elif data['role'] == "Admin":
-                    user = Admin(data['username'], data['password'])
-                else:
-                    continue 
-                self.users.append(user)
-            print(f"Loaded {len(self.users)} users from file.")
-        except Exception as e:
-            print(f"Error loading user data: {e}")
-
-    def save_user_to_json(self, new_user):
-        """Append a new user to the JSON file"""
-        user_data_list = []  #First read existing data
-        if os.path.exists(DATA_FILE):
-            with open(DATA_FILE, 'r', encoding='utf-8') as f:
-                user_data_list = json.load(f)
-        # Add new user data
-        user_dict = {
-            "username": new_user.username,
-            "password": new_user.password,
-            "role": new_user.role
-        }
-        user_data_list.append(user_dict)
-
-        # Write to file
-        with open(DATA_FILE, 'w', encoding='utf-8') as f:
-            json.dump(user_data_list, f, ensure_ascii=False, indent=4)
-            
-        print(f"User saved to {DATA_FILE} successfully!")
-
     @staticmethod
     def bubble_sort_seats(seats): # Sort seats by seat_id using bubble sort
         arr = seats.copy()
@@ -346,3 +302,47 @@ class LibrarySystem: # Main library seat reservation system
                         print("Invalid command.")
 
             self.check_all_reminders()
+            
+     def load_users_from_json(self):
+        """Load all users from the json file into system memoey"""
+        if not os.path.exists(DATA_FILE):
+            print("No user data found, starting fresh.")
+            return
+            
+        try:
+            with open(DATA_FILE, 'r', encoding='utf-8') as f:
+                user_data_list = json.load(f)
+                
+            self.users = [] # Clear existing users to prevent duplicates
+            
+            for data in user_data_list:
+                if data['role'] == "Customer":
+                    user = Customer(data['username'], data['password'])
+                elif data['role'] == "Admin":
+                    user = Admin(data['username'], data['password'])
+                else:
+                    continue 
+                self.users.append(user)
+            print(f"Loaded {len(self.users)} users from file.")
+        except Exception as e:
+            print(f"Error loading user data: {e}")
+
+    def save_user_to_json(self, new_user):
+        """Append a new user to the JSON file"""
+        user_data_list = []  #First read existing data
+        if os.path.exists(DATA_FILE):
+            with open(DATA_FILE, 'r', encoding='utf-8') as f:
+                user_data_list = json.load(f)
+        # Add new user data
+        user_dict = {
+            "username": new_user.username,
+            "password": new_user.password,
+            "role": new_user.role
+        }
+        user_data_list.append(user_dict)
+
+        # Write to file
+        with open(DATA_FILE, 'w', encoding='utf-8') as f:
+            json.dump(user_data_list, f, ensure_ascii=False, indent=4)
+            
+        print(f"User saved to {DATA_FILE} successfully!")
