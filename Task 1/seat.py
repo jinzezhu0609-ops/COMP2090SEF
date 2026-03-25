@@ -27,5 +27,4 @@ class Seat:
         return isinstance(other, Seat) and self.seat_id == other.seat_id
 
     def __lt__(self, other): # Compare seats by seat_id for sorting
-
         return self.seat_id < other.seat_id
