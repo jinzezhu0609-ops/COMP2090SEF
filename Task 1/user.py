@@ -45,4 +45,4 @@ class Admin(User): # Admin class inherits from User
         print("5. Delete a seat")
         print("6. Logout")
         print("7. Demo user sorting (selection sort)")
-
+    
