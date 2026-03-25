@@ -1,9 +1,12 @@
 import datetime
 import sys
+import json
+import os
 from user import User, Customer, Admin
 from seat import Seat
 from reservation import Reservation
 from reminder import Reminder
+DATA_FILE = "user_data.json"
 
 class LibrarySystem: # Main library seat reservation system
     
@@ -13,9 +16,54 @@ class LibrarySystem: # Main library seat reservation system
         self.reservations = []
         self.current_user = None
         self._init_test_data()
+        self.load_users_from_json()
 
     def _init_test_data(self): # Create seats 1 to 5 for testing 
         self.seats = Seat.create_multiple(1, 5)
+
+    def load_users_from_json(self):
+        """Load all users from the json file into system memoey"""
+        if not os.path.exists(DATA_FILE):
+            print("No user data found, starting fresh.")
+            return
+            
+        try:
+            with open(DATA_FILE, 'r', encoding='utf-8') as f:
+                user_data_list = json.load(f)
+                
+            self.users = [] # Clear existing users to prevent duplicates
+            
+            for data in user_data_list:
+                if data['role'] == "Customer":
+                    user = Customer(data['username'], data['password'])
+                elif data['role'] == "Admin":
+                    user = Admin(data['username'], data['password'])
+                else:
+                    continue 
+                self.users.append(user)
+            print(f"Loaded {len(self.users)} users from file.")
+        except Exception as e:
+            print(f"Error loading user data: {e}")
+
+    def save_user_to_json(self, new_user):
+        """Append a new user to the JSON file"""
+        user_data_list = []  #First read existing data
+        if os.path.exists(DATA_FILE):
+            with open(DATA_FILE, 'r', encoding='utf-8') as f:
+                user_data_list = json.load(f)
+        # Add new user data
+        user_dict = {
+            "username": new_user.username,
+            "password": new_user.password,
+            "role": new_user.role
+        }
+        user_data_list.append(user_dict)
+
+        # Write to file
+        with open(DATA_FILE, 'w', encoding='utf-8') as f:
+            json.dump(user_data_list, f, ensure_ascii=False, indent=4)
+            
+        print(f"User saved to {DATA_FILE} successfully!")
 
     @staticmethod
     def bubble_sort_seats(seats): # Sort seats by seat_id using bubble sort
@@ -53,11 +101,17 @@ class LibrarySystem: # Main library seat reservation system
 
     def register(self, role): # Register a new user (Customer or Admin)
         username = input("Enter username: ").strip()
+        if not username:
+            print("Please input valid name")
+            return
         for user in self.users:
             if user.username == username:
                 print("Username already exists!")
                 return
         password = input("Enter password: ").strip()
+        if not password:
+            print("Please input valid password")
+            return
         if role == "customer":
             user = Customer(username, password)
         elif role == "admin":
@@ -65,11 +119,15 @@ class LibrarySystem: # Main library seat reservation system
         else:
             return
         self.users.append(user)
+        self.save_user_to_json(user)
         print(f"{role} registered successfully! Please log in.")
 
     def login(self): # User login with username and password
         username = input("Username: ").strip()
         password = input("Password: ").strip()
+        if not username or not password:
+            print("Username and Password must not be null")
+            return False
         for user in self.users:
             if user.username == username and user.password == password:
                 self.current_user = user
@@ -84,7 +142,7 @@ class LibrarySystem: # Main library seat reservation system
 
     def show_all_seats(self): # Display all seats sorted by seat_id
         sorted_seats = self.bubble_sort_seats(self.seats)
-        print("\nCurrent seat status (bubble sort demo):")
+        print("\nCurrent seat status :")
         for seat in sorted_seats:
             print(seat)
 
@@ -117,6 +175,9 @@ class LibrarySystem: # Main library seat reservation system
             start_time = datetime.datetime.strptime(time_str, "%Y-%m-%d %H:%M")
         except ValueError:
             print("Invalid time format.")
+            return
+        if start_time < datetime.datetime.now():
+            print("The start time is in the past! Please choose time in the future")
             return
 
         print("\nChoose reservation duration:")
@@ -174,7 +235,7 @@ class LibrarySystem: # Main library seat reservation system
             return
 
         sorted_res = self.insertion_sort_reservations(my_res)
-        print("\nYour reservations (sorted by start time):")
+        print("\nYour reservations :")
         for r in sorted_res:
             status = "Active" if r.is_active() else "Expired"
             print(f"{r} [{status}]")
@@ -190,7 +251,7 @@ class LibrarySystem: # Main library seat reservation system
             print(f"{r} [{status}]")
 
     def admin_send_reminder(self): # Send reminders for upcoming reservations 
-        upcoming = [r for r in self.reservations if r.is_active() and 0 < r.time_to_start() <= 1800]
+        upcoming = [r for r in self.reservations if r.is_active() and 0 < r.time_to_start() <= 600]
         if not upcoming:
             print("No upcoming reservations.")
             return
@@ -284,4 +345,4 @@ class LibrarySystem: # Main library seat reservation system
                     else:
                         print("Invalid command.")
 
-                self.check_all_reminders()
+            self.check_all_reminders()
