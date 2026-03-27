@@ -56,7 +56,7 @@ class MaxHeap:
             else:
                 break
 
-    def extract_max(self):    
+    def remove_max(self):    
         if len(self.arr) <= 1:  # Cannot delete when the heap is empty
             print("The heap is empty and deletion failed")
             return None
