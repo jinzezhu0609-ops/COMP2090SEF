@@ -53,7 +53,7 @@ class MinHeap:
             else:
                 break
 
-    def extract_min(self):     
+    def remove_min(self):     
         if len(self.arr) <= 1:  # Cannot delete when the heap is empty
             print("The heap is empty and deletion failed")
             return None
