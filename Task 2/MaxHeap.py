@@ -74,11 +74,11 @@ class MaxHeap:
 if __name__ == "__main__":
     arr = [4, 10, 3, 5, 1, 2]
     my_heap = MaxHeap(arr)
-    print(f"Output the initialized object: {my_heap.arr}")      # Output the initialized object: [None, 1, 4, 2, 5, 10, 3]
+    print(f"Output the initialized object: {my_heap.arr}")      # Output the initialized object: [None, 10, 5, 3, 4, 1, 2]
     my_heap.heapSort()
-    print(f"Sorted output: {my_heap.heapSort()}")              # Sorted output [10, 5, 4, 3, 2, 1]
+    print(f"Sorted output: {my_heap.heapSort()}")              # Sorted output [1, 2, 3, 4, 5, 10]
     my_heap.get_max()
-    print(f"The minimum value: {my_heap.get_max()}")           # The minimum value: 1
+    print(f"The maximum value: {my_heap.get_max()}")           # The maximum value: 10
     my_heap.insert(15)
-    print(f"Output the object: {my_heap.arr}")                 # Output the object: [None, 1, 4, 2, 5, 10, 3, 15]
-    print(f"The object after deleting the minimum value: {my_heap.remove_max()}")       # The object after deleting the minimum value: 15
+    print(f"Output the object: {my_heap.arr}")                 # Output the object: [None, 15, 5, 10, 4, 1, 2, 3]
+    print(f"The object after deleting the maximum value: {my_heap.remove_max()}")       # The object after deleting the maximum value: 15
