@@ -23,7 +23,7 @@ e.g. arr = [4, 10, 3, 5, 1, 2]
 Step 2: Create a object
 e.g. my_heap = MinHeap(arr)  (Initialize the defined object directly and build a heap directly to satisfy the heap properties)
 Step 3: Output the initialized object
-e.g. print(f"Output the initialized object {my_heap.arr}")  # Output the initialized object [None, 1, 4, 2, 5, 10, 3]
+e.g. print(f"Output the initialized object: {my_heap.arr}")  # Output the initialized object: [None, 1, 4, 2, 5, 10, 3]
 -------------------------------------------------
 
 Forth, perform heap sort method
@@ -59,14 +59,14 @@ Last, sort out all the above operation steps
 if __name__ == "__main__":
     arr = [4, 10, 3, 5, 1, 2]
     my_heap = MinHeap(arr)
-    print(f"Output the initialized object {my_heap.arr}")      # Output the initialized object [None, 1, 4, 2, 5, 10, 3]
+    print(f"Output the initialized object: {my_heap.arr}")      # Output the initialized object: [None, 1, 4, 2, 5, 10, 3]
     my_heap.heapSort()
-    print(f"Sorted output: {my_heap.heapSort()}")              # Sorted output [10, 5, 4, 3, 2, 1]
+    print(f"Sorted output: {my_heap.heapSort()}")              # Sorted output: [10, 5, 4, 3, 2, 1]
     my_heap.get_min()
     print(f"The minimum value: {my_heap.get_min()}")           # The minimum value: 1
     my_heap.insert(15)
-    print(f"Output the object: {my_heap.arr}")                 # [None, 1, 4, 2, 5, 10, 3, 15]
-    print(f"The object after deleting the minimum value: {my_heap.remove_min()}")       # [None, 2, 4, 3, 5, 10, 15]
+    print(f"Output the object: {my_heap.arr}")                 # Output the object: [None, 1, 4, 2, 5, 10, 3, 15]
+    print(f"The object after deleting the minimum value: {my_heap.remove_min()}")       # The object after deleting the minimum value: 1
 
 
 
