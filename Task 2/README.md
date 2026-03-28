@@ -44,7 +44,7 @@ Sixth, insert an element into the list
 step 1: Call the insert() method
 e.g. my_heap.insert(15)
 step 2: Output the list of object
-e.g. print(f"Output the object: {my_heap.arr}")  # [None, 1, 4, 2, 5, 10, 3, 15]
+e.g. print(f"Output the object: {my_heap.arr}")  # Output the object: [None, 1, 4, 2, 5, 10, 3, 15]
 
 ***Attention: Why did I sort before but insert a new element, and the resulting list is not in reverse chronological order?
    Answer: Because I used a copy list in the heapSort() method, the actual list has not been changed   ( e.g. temp_arr = self.arr.copy() )
@@ -52,7 +52,7 @@ e.g. print(f"Output the object: {my_heap.arr}")  # [None, 1, 4, 2, 5, 10, 3, 15]
 
 Seventh, delete the minimum value in the heap
 step 1: Output the result
-e.g. print(f"The object after deleting the minimum value: {my_heap.remove_min()}")  # [None, 2, 4, 3, 5, 10, 15]
+e.g. print(f"The object after deleting the minimum value: {my_heap.remove_min()}")  # The object after deleting the minimum value: [None, 2, 4, 3, 5, 10, 15]
 ------------------------------------------------
 
 Last, sort out all the above operation steps
