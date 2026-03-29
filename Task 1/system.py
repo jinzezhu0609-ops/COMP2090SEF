@@ -2,7 +2,7 @@ import datetime
 import sys
 import json
 import os
-from user import User, Customer, Admin
+from user import Customer, Admin
 from seat import Seat
 from reservation import Reservation
 from reminder import Reminder
@@ -271,16 +271,6 @@ class LibrarySystem: # Main library seat reservation system
             status = "Active" if r.is_active() else "Expired"
             print(f"{r} [{status}]")
 
-    def admin_send_reminder(self): # Send reminders for upcoming reservations 
-        upcoming = [r for r in self.reservations if r.is_active() and 0 < r.time_to_start() <= 600]
-        if not upcoming:
-            print("No upcoming reservations.")
-            return
-        print("Sending reminders:")
-        for r in upcoming:
-            print(f"  {r.user.username}: seat {r.seat.seat_id} starts at {r.start_time.strftime('%H:%M')}")
-        print("Reminders sent.")
-
     def add_seat(self): # Add a new seat 
         new_id = max((s.seat_id for s in self.seats), default=0) + 1
         seat = Seat(new_id)
@@ -303,11 +293,6 @@ class LibrarySystem: # Main library seat reservation system
             return
         self.seats.remove(seat)
         print(f"Seat {seat_id} deleted.")
-
-    def check_all_reminders(self):
-        msgs = Reminder.check_reminders(self.reservations)
-        for msg in msgs:
-            print(msg)
 
     def run(self): # Main program loop
         while True:
@@ -350,21 +335,12 @@ class LibrarySystem: # Main library seat reservation system
                         self.show_all_seats()
                     elif cmd == "2":
                         self.show_all_reservations()
-                    elif cmd == "3":
-                        self.admin_send_reminder()
                     elif cmd == "4":
                         self.add_seat()
                     elif cmd == "5":
                         self.delete_seat()
                     elif cmd == "6":
                         self.logout()
-                    elif cmd == "7":
-                        sorted_users = self.selection_sort_users(self.users)
-                        print("\nAll users sorted by username (selection sort):")
-                        for u in sorted_users:
-                            print(f"  {u.username} ({u.role})")
                     else:
                         print("Invalid command.")
 
-            self.check_all_reminders()
-    
