@@ -40,9 +40,7 @@ class Admin(User): # Admin class inherits from User
         print("\n===== Admin Menu =====")
         print("1. View all seats")
         print("2. View all reservations")
-        print("3. Send reminders (for upcoming reservations)")
-        print("4. Add a new seat")
-        print("5. Delete a seat")
-        print("6. Logout")
-        print("7. Demo user sorting (selection sort)")
-    
+        print("3. Add a new seat")
+        print("4. Delete a seat")
+        print("5. Logout")
+       
