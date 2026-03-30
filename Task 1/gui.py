@@ -13,14 +13,24 @@ class LibraryGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("Library Seat Reservation System GUI")
-        self.root.geometry("600x500")
-        self.root.configure(padx=20, pady=20)
-        
-        # Initialize underlying system logic (automatically loads seats and user data)
+        self.root.geometry("600x550") 
+        self.root.configure(padx=20, pady=20)       
         self.sys = LibrarySystem()
-        
-        # Launch the login screen
+        self.background_loop_id = None     
         self.show_login_screen()
+
+    def start_background_tasks(self):
+        
+        if self.sys.current_user is not None:
+            self.update_timer_display()  
+            self.check_reminders_gui()   
+            
+            self.background_loop_id = self.root.after(1000, self.start_background_tasks)
+
+    def stop_background_tasks(self):
+        if self.background_loop_id:
+            self.root.after_cancel(self.background_loop_id)
+            self.background_loop_id = None
 
     def clear_screen(self):
         """Clear all widgets from the window"""
@@ -96,29 +106,40 @@ class LibraryGUI:
 
     def show_customer_dashboard(self):
         self.clear_screen()
-        tk.Label(self.root, text=f"Customer Dashboard - Welcome {self.sys.current_user.username}", font=("Arial", 16, "bold")).pack(pady=20)
+        tk.Label(self.root, text=f"Customer Dashboard - Welcome {self.sys.current_user.username}", font=("Arial", 16, "bold")).pack(pady=10)
 
         tk.Button(self.root, text="View all seats", width=30, command=self.view_all_seats).pack(pady=5)
         tk.Button(self.root, text="Reserve a seat", width=30, command=self.reserve_seat_gui).pack(pady=5)
         tk.Button(self.root, text="Release my seat", width=30, command=self.release_seat_gui).pack(pady=5)
         tk.Button(self.root, text="View my reservations", width=30, command=self.view_my_reservations).pack(pady=5)
-        tk.Button(self.root, text="Logout", width=30, command=self.logout, fg="red").pack(pady=20)
+        tk.Button(self.root, text="Logout", width=30, command=self.logout, fg="red").pack(pady=10)
         
-        self.check_reminders_gui()
+        
+        tk.Label(self.root, text="Real-time seat status", font=("Arial", 12, "bold")).pack(pady=5)
+        self.timer_frame = tk.Frame(self.root)
+        self.timer_frame.pack(pady=5)
+        
+        self.start_background_tasks() 
 
     def show_admin_dashboard(self):
         self.clear_screen()
-        tk.Label(self.root, text=f"Admin Dashboard - Welcome {self.sys.current_user.username}", font=("Arial", 16, "bold")).pack(pady=20)
+        tk.Label(self.root, text=f"Admin Dashboard - Welcome {self.sys.current_user.username}", font=("Arial", 16, "bold")).pack(pady=10)
 
         tk.Button(self.root, text="View all seats", width=30, command=self.view_all_seats).pack(pady=5)
         tk.Button(self.root, text="View all reservations", width=30, command=self.view_all_reservations).pack(pady=5)
         tk.Button(self.root, text="Add a new seat", width=30, command=self.add_seat_gui).pack(pady=5)
         tk.Button(self.root, text="Delete an available seat", width=30, command=self.delete_seat_gui).pack(pady=5)
-        tk.Button(self.root, text="Logout", width=30, command=self.logout, fg="red").pack(pady=20)
+        tk.Button(self.root, text="Logout", width=30, command=self.logout, fg="red").pack(pady=10)
         
-        self.check_reminders_gui()
+        
+        tk.Label(self.root, text="Real-time global status", font=("Arial", 12, "bold")).pack(pady=5)
+        self.timer_frame = tk.Frame(self.root)
+        self.timer_frame.pack(pady=5)
+        
+        self.start_background_tasks() 
 
     def logout(self):
+        self.stop_background_tasks()
         self.sys.current_user = None
         self.show_login_screen()
 
@@ -177,6 +198,16 @@ class LibraryGUI:
         self.sys.reservations.append(reservation)
         
         messagebox.showinfo("Success", f"Reservation successful!\n{reservation}")
+
+    def start_reminder_loop(self):
+        self.check_reminders_gui()
+        if self.sys.current_user is not None:
+            self.reminder_loop_id = self.root.after(10000, self.start_reminder_loop)
+
+    def stop_reminder_loop(self):
+        if self.reminder_loop_id:
+            self.root.after_cancel(self.reminder_loop_id)
+            self.reminder_loop_id = None
 
     def release_seat_gui(self):
         my_res = [r for r in self.sys.reservations if r.user == self.sys.current_user]
@@ -254,12 +285,51 @@ class LibraryGUI:
         messagebox.showinfo("Success", f"Seat {seat_id} deleted.")
 
     def check_reminders_gui(self):
-        """Check and display reminders in a pop-up window"""
-        msgs = Reminder.check_reminders(self.sys.reservations)
+        if not self.sys.current_user:
+            return
+        if isinstance(self.sys.current_user, Customer):
+            target_reservations = [r for r in self.sys.reservations if r.user == self.sys.current_user]
+        else:
+            target_reservations = self.sys.reservations
+        msgs = Reminder.check_reminders(target_reservations)
         if msgs:
             msg_text = "\n".join(msgs)
             messagebox.showinfo("System Reminder", msg_text)
+    
+    def update_timer_display(self):
+        if not self.sys.current_user or not hasattr(self, 'timer_frame'):
+            return
+            
+        for widget in self.timer_frame.winfo_children():
+            widget.destroy()
+            
+        if isinstance(self.sys.current_user, Customer):
+            active_res = [r for r in self.sys.reservations if r.user == self.sys.current_user and r.is_active()]
+        else:
+            active_res = [r for r in self.sys.reservations if r.is_active()]
 
+        if not active_res:
+            tk.Label(self.timer_frame, text="There are no ongoing appointments at present", fg="gray").pack()
+            return
+
+        for res in active_res:
+            if res.time_to_start() > 0:
+                secs = int(res.time_to_start())
+                h, remainder = divmod(secs, 3600)
+                m, s = divmod(remainder, 60)
+                time_str = f"{h:02d}:{m:02d}:{s:02d}"
+                
+                msg = f"Seat {res.seat.seat_id} Not start - Distance Start: {time_str}"
+                tk.Label(self.timer_frame, text=msg, fg="blue", font=("Arial", 10)).pack()
+                
+            elif res.time_to_end() > 0:
+                secs = int(res.time_to_end())
+                h, remainder = divmod(secs, 3600)
+                m, s = divmod(remainder, 60)
+                time_str = f"{h:02d}:{m:02d}:{s:02d}"
+                
+                msg = f"Seat {res.seat.seat_id} In use - rest time: {time_str}"
+                tk.Label(self.timer_frame, text=msg, fg="green", font=("Arial", 11, "bold")).pack()
 
 if __name__ == "__main__":
     root = tk.Tk()
