@@ -335,11 +335,11 @@ class LibrarySystem: # Main library seat reservation system
                         self.show_all_seats()
                     elif cmd == "2":
                         self.show_all_reservations()
-                    elif cmd == "4":
+                    elif cmd == "3":
                         self.add_seat()
-                    elif cmd == "5":
+                    elif cmd == "4":
                         self.delete_seat()
-                    elif cmd == "6":
+                    elif cmd == "5":
                         self.logout()
                     else:
                         print("Invalid command.")
