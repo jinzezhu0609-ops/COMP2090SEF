@@ -1,7 +1,6 @@
 class MinHeap:
     def __init__(self, arr = None):  
-        ''' Initialize the array and use a None as a placeholder at hte 0th positon, 
-        and the data will start from index 1'''
+        '''Using index 0 as None; data starts at index 1'''
         if arr is None:
             self.arr = [None]
         else:
@@ -9,30 +8,28 @@ class MinHeap:
             
         if len(self.arr) > 1:    # Start building the heap
             n = len(self.arr) - 1    # The true total number of elements
-            for i in range(n // 2, 0, -1):  # Starting from the last element with a child, proceed in reverse order and make adjustments one by one
+            for i in range(n // 2, 0, -1):  
                 self.heapify(self.arr, n, i)
 
     def heapify(self, arr, n, i):
+        """Maintain min-heap property"""
         smallest = i       # Suppose i is the smallest
         l = 2 * i          # Left subset
         r = 2 * i + 1      # Right subset
-        
-        if l <= n and arr[i] > arr[l]:   # If the left child node exists and is smaller than the parent node, update the index
+        if l <= n and arr[i] > arr[l]:   
             smallest = l 
-        if r <= n and arr[smallest] > arr[r]:  # If the right child exists and is smaller than the minimum value just now, update the index again
+        if r <= n and arr[smallest] > arr[r]: 
             smallest = r
-            
-        if smallest != i:   # If after a round of comparison, it is that the smallest one is not the parent node
+        if smallest != i:  # The smallest one is not the parent node
             arr[i], arr[smallest] = arr[smallest], arr[i]
             self.heapify(arr, n, smallest)
 
     def heapSort(self):
+        """Returns sorted array (descending order for Min-Heap)"""
         temp_arr = self.arr.copy()
         n = len(temp_arr) - 1  
-        # In each iteration, swap the top of the heap (the overall minimum) with the last element in the current range
         for i in range(n, 1, -1):  
-        # After swapping, the element from the end is now at the top. We need to sift it down within the remaining unsorted range (i - 1).
-            temp_arr[i], temp_arr[1] = temp_arr[1], temp_arr[i] 
+        # Move current minimum to the end and heapify the reduced heap
             self.heapify(temp_arr, i - 1, 1) 
         return temp_arr[1:]
 
@@ -42,9 +39,9 @@ class MinHeap:
         return self.arr[1]      
     
     def insert(self, val):
+        """Insert value and sift-up to maintain heap property"""
         self.arr.append(val)  # append the new element to the very end of the array
         curr = len(self.arr) - 1  
-        # Start upward adjustment (Sift Up): As long as it hasn't reached the top of the heap (index 1)
         while curr > 1:
             parent = curr // 2    
             if self.arr[curr] < self.arr[parent]:
@@ -61,11 +58,11 @@ class MinHeap:
         if len(self.arr) == 2:    
             return self.arr.pop()
 
-        min_val = self.arr[1]      # Save the minimum value at the top of the heap to return 
+        min_val = self.arr[1]  # Save the minimum value at the top of the heap to return 
         self.arr[1] = self.arr.pop()
-        self.heapify(self.arr, len(self.arr) - 1, 1)
-        
+        self.heapify(self.arr, len(self.arr) - 1, 1)    
         return min_val
+
 
 
 if __name__ == "__main__":
