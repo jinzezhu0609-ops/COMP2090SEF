@@ -15,7 +15,7 @@
 
 **Second, before invoking the entire program, some calling measures need to be taken.**
 * We need to write it down below the entire program: 
-* '''if __name__ = "__main__"''':  (Let a piece of code only be executed when this file is directly run, and not when it is imported by another file)
+  '''if __name__ = "__main__"''':  (Let a piece of code only be executed when this file is directly run, and not when it is imported by another file)
 
 -------------------------------------------------
 
