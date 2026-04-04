@@ -1,15 +1,15 @@
-THis is a guide on how to use program:
+THis is a guide on how to use program(Let's take MinHeap as an example):
 --------------------------------------------------
 
-First, we need to modify the VS code Settings to make it output in the Terminal panel.
-Step 1: Open settings
-Shoetcut key: Crtl + , (Windows) or Cmd + , (Mac)
-Step 2: Enter in the search box
-Plaintext: code runner run in terminal
-Step 3: Check
-Check Code-runner: Run in Terminal
-Step 4: Then click the button
-Click the button and the program will automatically start in the Terminal panel
+**First, we need to modify the VS Code Settings to make it output in the Terminal panel.**
+* **Step 1:** Open settings
+  * Shortcut key: `Ctrl + ,` (Windows) or `Cmd + ,` (Mac)
+* **Step 2:** Enter in the search box
+  * Plaintext: `code runner run in terminal`
+* **Step 3:** Check the box
+  * Check `Code-runner: Run in Terminal`
+* **Step 4:** Then click the button
+  * Click the play button and the program will automatically start in the Terminal panel
 -------------------------------------------------
 
 Second, before invoking the entire program, some calling measures need to be taken.
@@ -67,18 +67,3 @@ if __name__ == "__main__":
     my_heap.insert(15)
     print(f"Output the object: {my_heap.arr}")                 # Output the object: [None, 1, 4, 2, 5, 10, 3, 15]
     print(f"The object after deleting the minimum value: {my_heap.remove_min()}")       # The object after deleting the minimum value: 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
