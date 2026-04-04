@@ -28,7 +28,7 @@
   e.g. arr = [4, 10, 3, 5, 1, 2]
 * Step 2: Create an object
 
-  e.g. my_heap = MinHeap(arr)  (Initialize the defined object directly and build a heap directly to satisfy the heap properties)
+  e.g. my_heap = MinHeap(arr)  #Initialize the defined object directly and build a heap directly to satisfy the heap properties
 * Step 3: Output the initialized object
 
   e.g. print(f"Output the initialized object: {my_heap.arr}")  # Output the initialized object: [None, 1, 4, 2, 5, 10, 3]
