@@ -1,4 +1,5 @@
 **THis is a guide on how to use program(Let's take MinHeap as an example):**
+
 --------------------------------------------------
 
 **First, we need to modify the VS Code Settings to make it output in the Terminal panel.**
@@ -63,7 +64,7 @@
 
 ***Attention: Why did I sort before but insert a new element, and the resulting list is not in reverse chronological order?
    
-   Answer: Because I used a copy list in the heapSort() method, the actual list has not been changed   ( e.g. temp_arr = self.arr.copy() )
+***Answer: Because I used a copy list in the heapSort() method, the actual list has not been changed   ( e.g. temp_arr = self.arr.copy() )
    
 ------------------------------------------------
 
