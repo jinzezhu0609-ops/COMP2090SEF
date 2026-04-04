@@ -1,4 +1,4 @@
-**THis is a guide on how to use program(Let's take MinHeap as an example):**
+**This is a guide on how to use program(Let's take MinHeap as an example):**
 --------------------------------------------------
 
 **First, we need to modify the VS Code Settings to make it output in the Terminal panel.**
@@ -16,15 +16,16 @@
 **Second, before invoking the entire program, some calling measures need to be taken.**
 * We need to write it down below the entire program:
   
-  ``` if __name__ = "__main__" ```:  (Let a piece of code only be executed when this file is directly run, and not when it is imported by another file)
+  ```python
+     if __name__ == "__main__" :  (Let a piece of code only be executed when this file is directly run, and not when it is imported by another file)
 
 -------------------------------------------------
 
-**Third, start creating a object**
-* Step 1: Input a array at random 
+**Third, start creating an object**
+* Step 1: Input an array at random 
 
   e.g. arr = [4, 10, 3, 5, 1, 2]
-* Step 2: Create a object
+* Step 2: Create an object
 
   e.g. my_heap = MinHeap(arr)  (Initialize the defined object directly and build a heap directly to satisfy the heap properties)
 * Step 3: Output the initialized object
@@ -61,9 +62,9 @@
  
   e.g. print(f"Output the object: {my_heap.arr}")  # Output the object: [None, 1, 4, 2, 5, 10, 3, 15]
 
-***Attention: Why did I sort before but insert a new element, and the resulting list is not in reverse chronological order?
-   
-***Answer: Because I used a copy list in the heapSort() method, the actual list has not been changed   ( e.g. temp_arr = self.arr.copy() )
+> ***Attention: Why did I sort before but insert a new element, and the resulting list is not in reverse chronological order?
+>
+>***Answer: Because I used a copy list in the heapSort() method, the actual list has not been changed   ( e.g. temp_arr = self.arr.copy() )
    
 ------------------------------------------------
 
@@ -76,7 +77,8 @@
 
 **Last, sort out all the above operation steps**
 
-  ```if __name__ == "__main__":```
+  ```pyhton
+  if __name__ == "__main__":
      
      arr = [4, 10, 3, 5, 1, 2]
      
@@ -96,6 +98,6 @@
      
      print(f"Output the object: {my_heap.arr}")                 # Output the object: [None, 1, 4, 2, 5, 10, 3, 15]
      
-     print(f"The object after deleting the minimum value: {my_heap.remove_min()}")       # The object after deleting the minimum value: 1
+     print(f"The object after deleting the minimum value: {my_heap.remove_min()}")       # The object after deleting the minimum value: 1 
     
 -----------------------------------------------
