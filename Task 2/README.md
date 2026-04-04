@@ -18,7 +18,7 @@
   
   ```python
      if __name__ == "__main__" :
- (Let a piece of code only be executed when this file is directly run, and not when it is imported by another file) 
+*  (Let a piece of code only be executed when this file is directly run, and not when it is imported by another file) 
 
 -------------------------------------------------
 
