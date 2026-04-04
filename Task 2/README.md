@@ -1,5 +1,4 @@
 **THis is a guide on how to use program(Let's take MinHeap as an example):**
-
 --------------------------------------------------
 
 **First, we need to modify the VS Code Settings to make it output in the Terminal panel.**
