@@ -34,30 +34,30 @@
 -------------------------------------------------
 
 **Fourth, perform heap sort method**
-*step 1: Call the heapSort() method
+* step 1: Call the heapSort() method
  
  e.g. my_heap.heapSort()
-*step 2: Output the result
+* step 2: Output the result
  
  e.g. print(f"Sorted output: {my_heap.heapSort()}")  # Sorted output [10, 5, 4, 3, 2, 1]
 
 ------------------------------------------------
 
 **Fifth, find the minimum value of the object list**
-*step 1: Call the get_min() method
+* step 1: Call the get_min() method
  
  e.g. my_heap.get_min()
-*step 2: Output the result
+* step 2: Output the result
  
  e.g. print(f"The minimum value: {my_heap.get_min()}")  # The minimum value: 1
 
 ------------------------------------------------
 
 **Sixth, insert an element into the list**
-*step 1: Call the insert() method
+* step 1: Call the insert() method
  
  e.g. my_heap.insert(15)
-*step 2: Output the list of object
+* step 2: Output the list of object
  
  e.g. print(f"Output the object: {my_heap.arr}")  # Output the object: [None, 1, 4, 2, 5, 10, 3, 15]
 
@@ -67,7 +67,7 @@
 ------------------------------------------------
 
 **Seventh, delete the minimum value in the heap**
-*step 1: Output the result
+* step 1: Output the result
  
  e.g. print(f"The object after deleting the minimum value: {my_heap.remove_min()}")  # The object after deleting the minimum value: [None, 2, 4, 3, 5, 10, 15]
 
