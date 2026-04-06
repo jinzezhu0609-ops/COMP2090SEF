@@ -1,6 +1,6 @@
 import datetime
-
 class Reservation:
+    '''Represents a specific seat reservation record'''
     def __init__(self, user, seat, start_time, duration_minutes):
         self.user = user
         self.seat = seat
@@ -8,11 +8,13 @@ class Reservation:
         self.duration_minutes = duration_minutes    # Duration of the reservation in minutes
         self.end_time = start_time + datetime.timedelta(minutes = duration_minutes)    # Calculate end time based on start time and duration
         
+        #Initially all unnotified (False)
         self.start_notified = False
         self.end_notified = False
         self.ongoing_notified = False
 
     def __str__(self):
+        '''Returns a user-friendly string'''
         return (f"{self.user.username} reserved seat {self.seat.seat_id} "
                 f"from {self.start_time.strftime('%Y-%m-%d %H:%M')} "
                 f"to {self.end_time.strftime('%Y-%m-%d %H:%M')} "
