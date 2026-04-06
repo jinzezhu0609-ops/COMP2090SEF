@@ -174,7 +174,8 @@ class LibraryGUI:
 
         # Pop-up window for user input
         seat_id_str = simpledialog.askstring("Reservation", f"Available seats: {[s.seat_id for s in available_seats]}\nPlease enter the seat number you want to reserve:")
-        if not seat_id_str: return
+        if not seat_id_str: 
+            return
         
         try:
             seat_id = int(seat_id_str)
@@ -201,11 +202,15 @@ class LibraryGUI:
             return
 
         duration_str = simpledialog.askstring("Reservation", "Enter reservation duration (e.g., 10, 20, 30, 60 minutes):", initialvalue="30")
+        
+        if duration_str is None: 
+            return
+
         try:
             duration = int(duration_str)
-        except (ValueError, TypeError):
-            duration = 30 # Default to 30 minutes
-
+        except ValueError:
+            duration = 30 
+            
         # Create reservation record
         reservation = Reservation(self.sys.current_user, seat, start_time, duration)
         seat.is_available = False
