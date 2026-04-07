@@ -1,5 +1,4 @@
 **This is a guide on how to run program: you can directly click on MinHeap.py and MaxHeap.py to run**
-
 *Beacuse I have already written the following content in the program
 --------------------------------------------------
 
