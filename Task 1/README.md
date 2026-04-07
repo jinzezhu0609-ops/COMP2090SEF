@@ -53,23 +53,23 @@
   ```text
   Available seats: [1,2,3,4,5] 
   Please enter the seat number you want to reserve:
-Step 1: Please enter the seat number you want to want to reserve (e.g. 1).
+🔸Step 1: Please enter the seat number you want to want to reserve (e.g. 1).
 
-Step 2: Click on "OK" (If you click on "Cancel", you will exit this interface).
+🔸Step 2: Click on "OK" (If you click on "Cancel", you will exit this interface).
 
-Step 3: You will see "Enter start time (format: 2025-03-04 14:00): " (If you don't see this page, you need to click on the main page again, because this page is hidden on the main page).
+🔸Step 3: You will see "Enter start time (format: 2025-03-04 14:00): " (If you don't see this page, you need to click on the main page again, because this page is hidden on the main page).
 
-🔸 Case 1: If you enter an unreasonable time (e.g. 111), the system will pop up automatically: Invalid time format.
+🔹 Case 1: If you enter an unreasonable time (e.g. 111), the system will pop up automatically: Invalid time format.
 
-🔸 Case 2: If you enter past time (e.g. 2025-01-12 00:00), the system will pop up automatically: The start time cannot be the past.
+🔹 Case 2: If you enter past time (e.g. 2025-01-12 00:00), the system will pop up automatically: The start time cannot be the past.
 
-🔸 Case 3: If you enter normal time (e.g. 2026-04-07 01:00), and then click on "OK", you will enter the next page (If you click on "Cancel", you will exit this interface).
+🔹 Case 3: If you enter normal time (e.g. 2026-04-07 01:00), and then click on "OK", you will enter the next page (If you click on "Cancel", you will exit this interface).
 
-Step 4: You will see "Enter reservation duration(e.g., 10, 20, 30, 60 miniutes): " (Default value is 30).
+🔸Step 4: You will see "Enter reservation duration(e.g., 10, 20, 30, 60 miniutes): " (Default value is 30).
 
 e.g. You can input "10" then click on "OK" (If you click on "Cancel", you will exit this interface).
 
-Step 5: You will see system message "Reservation successful! ZHU resered seat 1 from 2026-04-07 01:00 to 2026-04-07 01:10(10 min)".
+🔸Step 5: You will see system message "Reservation successful! ZHU resered seat 1 from 2026-04-07 01:00 to 2026-04-07 01:10(10 min)".
 
 🔹 Case 1: If the time you have made an appointment is within 5 minutes from now, the system will also pop up automatically: [REMIND] Seat 1 will start soon!.
 
@@ -82,7 +82,7 @@ Release my seat:
 when we click on it, you will see “Your reservations:
                                    1. ZHU reserved seat 1 from 2026-04-07 01:00 to 2026-04-07 01:10(10 min)[Active]
                                    Enter the reservation number to release(1,2...):”
-e.g. Step 1: You can input: 1
+e.g. 🔸Step 1: You can input: 1
 
      Step 2: Click on the "OK" (If you click on the "Cancel", you will exit this interface)
 
@@ -93,9 +93,9 @@ e.g. Step 1: You can input: 1
 View my reservations:
 when we click on it,
 
-Case 1: If you made an appointment but it wasn't released, the system will also pop up automatically: ZHU reserved seat 1 from 2026-04-07 01:00 to 2026-04-07 01:10(10 min)[Active]
+🔹Case 1: If you made an appointment but it wasn't released, the system will also pop up automatically: ZHU reserved seat 1 from 2026-04-07 01:00 to 2026-04-07 01:10(10 min)[Active]
 
-Case 2: If you haven't made an appointment or have cancelled it, the system will also pop up automatically: You have no reservation records.
+🔹Case 2: If you haven't made an appointment or have cancelled it, the system will also pop up automatically: You have no reservation records.
 
 ----------------------------------------
 
