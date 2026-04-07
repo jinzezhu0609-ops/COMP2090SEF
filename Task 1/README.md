@@ -76,18 +76,19 @@ Step 5: You will see system message "Reservation successful! ZHU resered seat 1 
 🔹 Case 2: If the time you have made an appointment happens to be the current time, the system will also pop up automatically: [REMIND] Seat 1 reservation time is officially beginning..
 
 💡 Attention: After you have made an appointment, you will see how much time is left until the start or end (With only five minutes left, the system will also pop up automatically: [REMIND] Seat 1 will end soon, please prepare to leave).
-Release my seat:
-when we click on it, you will see
 
-Plaintext
-Your reservations:
-1. ZHU reserved seat 1 from 2026-04-07 01:00 to 2026-04-07 01:10(10 min)[Active]
-Enter the reservation number to release(1,2...):
+------------------------------------------
+Release my seat:
+when we click on it, you will see “Your reservations:
+                                   1. ZHU reserved seat 1 from 2026-04-07 01:00 to 2026-04-07 01:10(10 min)[Active]
+                                   Enter the reservation number to release(1,2...):”
 e.g. Step 1: You can input: 1
 
-Step 2: Click on the "OK" (If you click on the "Cancel", you will exit this interface)
+     Step 2: Click on the "OK" (If you click on the "Cancel", you will exit this interface)
 
-Step 3: You will see the system will also pop up automatically: Seat 1 has been successfully released!
+     Step 3: You will see the system will also pop up automatically: Seat 1 has been successfully released!
+
+-----------------------------------------
 
 View my reservations:
 when we click on it,
@@ -96,9 +97,12 @@ Case 1: If you made an appointment but it wasn't released, the system will also 
 
 Case 2: If you haven't made an appointment or have cancelled it, the system will also pop up automatically: You have no reservation records.
 
-Logout
+----------------------------------------
+
+Logout：
 when we click on it, you will exit to the login interface.
-   
+
+---------------------------------------
   
   
   
