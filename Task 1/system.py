@@ -1,6 +1,6 @@
 import json
-import os
 from seat import StandardSeat, ComputerSeat
+from user import Customer, Admin
 DATA_FILE = "user_data.json"
 
 class LibrarySystem: # Main library seat reservation system
@@ -48,65 +48,23 @@ class LibrarySystem: # Main library seat reservation system
     
     def load_users_from_json(self):
         """Load all user data from the JSON file into system memory"""
-        # Get the absolute directory of the current script
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        full_path = os.path.join(script_dir, DATA_FILE)
-        
-        print(f"Looking for user data at: {full_path}")
-        
-        if not os.path.exists(full_path):
-            print("No user data found, starting fresh.")
-            return
+        self.users = []     # Clear existing users to avoid duplicates
             
         try:
-            with open(full_path, 'r', encoding='utf-8') as f:
-                user_data_list = json.load(f)
-                
-            self.users = []     # Clear existing users to avoid duplicates
-            
-            # Iterate through the JSON data and reconstruct user objects
-            for data in user_data_list:
-                if data['role'] == "Customer":
-                    from user import Customer
-                    user = Customer(data['username'], data['password'])
-                elif data['role'] == "Admin":
-                    from user import Admin
-                    user = Admin(data['username'], data['password'])
-                else:
-                    continue      # Skip unknown roles
-                self.users.append(user)
-            print(f"Loaded {len(self.users)} users from file successfully!")
-        except Exception as e:
-            print(f"Error loading user data: {e}")
+            with open(DATA_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            # Reconstruct user objects based on their roles
+            for item in data:
+                if item.get("role") == "Customer":
+                    self.users.append(Customer(item.get("username"), item.get("password")))
+                elif item.get("role") == "Admin":
+                    self.users.append(Admin(item.get("username"), item.get("password")))
+        except Exception:
+            pass        # Skip if file doesn't exist or is corrupted
 
-    def save_user_to_json(self, new_user):
+    def save_user_to_json(self, new_user=None):
         """Save a new user to the JSON file (overwrite mode to prevent duplicates)"""
-        # Get the absolute directory of the current script
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        full_path = os.path.join(script_dir, DATA_FILE)
-        
-        user_data_list = []  # Read existing data first
-        if os.path.exists(full_path):
-            with open(full_path, 'r', encoding='utf-8') as f:
-                user_data_list = json.load(f)
-        
-        # Check if username already exists (prevent duplicate registrations)
-        for user in user_data_list:
-            if user['username'] == new_user.username:
-                print("Username already exists in file!")
-                return False # Indicates save failed
-        
-        # Append new user data
-        user_dict = {
-            "username": new_user.username,
-            "password": new_user.password,
-            "role": new_user.role
-        }
-        user_data_list.append(user_dict)
-        
-        # Rewrite the entire file with updated data
-        with open(full_path, 'w', encoding='utf-8') as f:
-            json.dump(user_data_list, f, ensure_ascii=False, indent=4)
-            
-        print(f"User saved to {full_path} successfully!")
-        return True          # Indicates save succeeded
+        with open(DATA_FILE, "w", encoding="utf-8") as f:
+            # Convert user objects to dictionaries and save
+            data = [u.to_dict() for u in self.users]
+            json.dump(data, f, ensure_ascii=False, indent=4)
