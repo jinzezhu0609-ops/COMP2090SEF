@@ -3,6 +3,9 @@ class User():
         self.username = username
         self.password = password
         self.role = None   # User role, specified by subclasses
+    
+    def to_dict(self):  
+        return {"username": self.username, "password": self.password, "role": self.role}  #Facilitate direct conversion to JSON later.
 
 class Customer(User):
     def __init__(self, username, password):
