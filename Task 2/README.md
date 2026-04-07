@@ -1,7 +1,8 @@
 **This is a guide on how to run program: you can directly click on MinHeap.py and MaxHeap.py to run**
-
+Beacuse I have already written the following content in the program
 --------------------------------------------------
 
+**Take Min heap as an example** 
 **First, we need to modify the VS Code Settings to make it output in the Terminal panel.**
 * **Step 1:** Open settings
   * Shortcut key: `Ctrl + ,` (Windows) or `Cmd + ,` (Mac)
