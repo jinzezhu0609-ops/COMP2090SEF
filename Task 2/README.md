@@ -1,5 +1,8 @@
-**This is a guide on how to run program: you can directly click on MinHeap.py and MaxHeap.py to run**
-*Beacuse I have already written the following content in the program
+# How to Run the Program
+
+You can easily execute the programs by directly running the `MinHeap.py` and `MaxHeap.py` files. 
+
+> **Note:** The necessary execution code has already been written inside these programs, so they are ready to run out of the box.
 --------------------------------------------------
 
 **Take Min heap as an example** 
