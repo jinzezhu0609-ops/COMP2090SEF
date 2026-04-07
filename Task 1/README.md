@@ -9,7 +9,7 @@ This is a guide on how to run program
 * **Step 3:** Check the box
   * Check `Code-runner: Run in Terminal`
 * **Step 4:** Then click the button
-  * Click the play button and the program will automatically start in the Terminal panel
+  * Click the play button in the top right corner of the editor and the program will automatically start in the Terminal panel
  
 --------------------------------------
 
