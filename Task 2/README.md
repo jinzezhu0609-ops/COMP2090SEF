@@ -1,4 +1,5 @@
-**This is a guide on how to run program(Let's take MinHeap as an example):**
+**This is a guide on how to run program: you can directly click on MinHeap.py and MaxHeap.py to run**
+
 --------------------------------------------------
 
 **First, we need to modify the VS Code Settings to make it output in the Terminal panel.**
