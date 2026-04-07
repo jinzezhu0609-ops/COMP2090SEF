@@ -6,7 +6,7 @@ You can easily execute the programs by directly running the `MinHeap.py` and `Ma
 
 --------------------------------------------------
 
-# Take Min heap as an example  
+Take Min heap as an example： 
 **First, we need to modify the VS Code Settings to make it output in the Terminal panel.**
 * **Step 1:** Open settings
   * Shortcut key: `Ctrl + ,` (Windows) or `Cmd + ,` (Mac)
