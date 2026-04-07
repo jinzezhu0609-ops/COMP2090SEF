@@ -3,6 +3,7 @@
 You can easily execute the programs by directly running the `MinHeap.py` and `MaxHeap.py` files. 
 
 > **Note:** The necessary execution code has already been written inside these programs, so they are ready to run out of the box.
+
 --------------------------------------------------
 
 **Take Min heap as an example** 
@@ -14,7 +15,7 @@ You can easily execute the programs by directly running the `MinHeap.py` and `Ma
 * **Step 3:** Check the box
   * Check `Code-runner: Run in Terminal`
 * **Step 4:** Then click the button
-  * Click the play button and the program will automatically start in the Terminal panel
+  * Click the play button in the top right corner of the editor and the program will automatically start in the Terminal panel
  
 -------------------------------------------------
 
