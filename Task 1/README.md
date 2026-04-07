@@ -30,6 +30,7 @@
   * e.g. Password: 123456
 
 > ** If you don't enter your name or password, register directly. The system will pop up automatically: Please fill in the username and password you want to register in the input boxes above!
+
 > ** If you don't enter your name or password, login directly. The system will pop up automatically: Username and Password cannot be empty!
 
 * Click on the "Register as customer":
