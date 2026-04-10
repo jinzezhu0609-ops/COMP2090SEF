@@ -28,7 +28,7 @@ Please ensure that the following files are located in the same working directory
 3. **Navigate to the Directory**: Use the `cd` command to enter the folder containing the above-mentioned files. ```bash
 cd ...\COMP2090SEF-main\Task 1 ```
 4. **Start the program**: Execute the following command: ```bash
-python gui.py
+python gui.py ```
 
 *(Note: Some systems may require using `python3 gui.py`)*. 
 
