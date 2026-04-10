@@ -1,4 +1,4 @@
-# Implementation of Python Heap Data Structures (Max-Heap & Min-Heap) 
+## Implementation of Python Heap Data Structures (Max-Heap & Min-Heap) 
 This project provides two core Python classes for efficiently managing and operating the **binary heap** data structure. 
 
 ---
