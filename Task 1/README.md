@@ -1,16 +1,16 @@
-# 📚 Library Seat Reservation System 
+# Library Seat Reservation System 
 
 This project is a library seat reservation system with a graphical user interface (GUI) built based on Python and Tkinter. The system implements core functions such as user registration, login, real-time seat viewing, reservation, and countdown reminders, and persists data through local JSON files. 
 
 ---
 
-## 🛠️ Environment Requirements (Prerequisites) 
+## Environment Requirements (Prerequisites) 
 * **Python Version**: 3.7 or higher.
 * **Tkinter Library**: Comes with the Python standard library and no additional installation is required.
 * *For Linux users (such as Ubuntu) who are missing this library, please run*: `sudo apt-get install python3-tk`. 
 ---
 
-## 📁 Project Structure 
+## Project Structure 
 Please ensure that the following files are located in the same working directory to ensure the normal operation of the program: 
 | File Name | Type | Function Description |
 | :--- | :--- | :--- |
@@ -24,7 +24,7 @@ Please ensure that the following files are located in the same working directory
 
 ---
 
-## 🚀 How to Run 
+## How to Run 
 1. **Download and Unzip**: Download the zip filie from Github, unzip and place the file to your chosen folder.
 2. **Open the Terminal**: Open your Terminal (macOS/Linux) or Command Prompt (Windows).
 3. **Navigate to the Directory**: Use the `cd` command to enter the folder containing the above-mentioned files. ```bash
@@ -36,7 +36,7 @@ python gui.py ```
 
 ---
 
-## 💡 Usage Guide 
+## Usage Guide 
 ### 1. Account Preparation
 * **First Use**: Since `user_data.json` is initially empty, you need to register first.
 * **Registration**: Enter your username and password in the login window, and click either **"Register as Customer"** or **"Register as Admin"**.
