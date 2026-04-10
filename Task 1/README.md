@@ -23,13 +23,16 @@ Please ensure that the following files are located in the same working directory
 ---
 
 ## 🚀 How to Run 
-1. **Open the Terminal**: Open your Terminal (macOS/Linux) or Command Prompt (Windows).
-2. **Navigate to the Directory**: Use the `cd` command to enter the folder containing the above-mentioned files. ```bash
+1. **Compress**: Compress it into a Zip package on GitHub and place it on your destop.
+2. **Decompress**: Extract the compressed package on the destop.
+3. **Open the Terminal**: Open your Terminal (macOS/Linux) or Command Prompt (Windows).
+4. **Navigate to the Directory**: Use the `cd` command to enter the folder containing the above-mentioned files. ```bash
 cd /your/project/path ```
-3. **Start the program**: Execute the following command: ```bash
+5. **Start the program**: Execute the following command: ```bash
 python gui.py
 
 *(Note: Some systems may require using `python3 gui.py`)*. 
+
 ---
 
 ## 💡 Usage Guide 
@@ -37,13 +40,18 @@ python gui.py
 * **First Use**: Since `user_data.json` is initially empty, you need to register first.
 * **Registration**: Enter your username and password in the login window, and click either **"Register as Customer"** or **"Register as Admin"**.
 * **Login**: After successful registration, log in to the system directly by clicking **"Login"** with your account. 
-### 2. Core Functions
+### 2. Customer Dashboard
 * **Seat Viewing**: The system presets 5 test seats (3 standard seats and 2 computer seats). You can click "View all seats" on the dashboard to check the real-time status.
 * **Seat Reservation**: Customers can select an available seat and enter the start time (format: `2026-04-10 18:00`) and reservation duration.
-* **Real-time Reminders**: After a successful reservation, a real-time countdown will be displayed at the bottom of the main interface. When there are less than 5 minutes until the reservation starts or ends, a pop-up window will appear to remind you. 
-### 3. Administrator Privileges
-* After logging in, administrators can **add new seats**, **delete idle seats**, and view **all reservation records** in the system. 
+* **Real-time Reminders**: After a successful reservation, a real-time countdown will be displayed at the bottom of the main interface. When there are less than 5 minutes until the reservation starts or ends, a pop-up window will appear to remind you.
+* **Rlease my seat**: After a customer has made a reservation, if they suddenly no longer want this seat, they can directly cancel the reservation.
+* **View my reservation**: After a succeeful reservation, customers can view their reservation orders
+* **Logout**: After use, if customer needs to exit, he can directly press a button to exit to the login interface.
+### 3. Admin Dashboard
+* **Add new seats**: Admin can increase the total number of seats
+* **Delete an available seat**: If there are too many seats, the admin can delete some of them
+* **View all reservation**: Admin can view all appointments
+* **View all seats**: Admin can view all seats
+* **Logout**: After use, if admin needs to exit, he can directly press a button to exit to the login interface.
+  
 ---
-
-  
-  
