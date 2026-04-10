@@ -23,8 +23,8 @@ Please ensure that the following files are located in the same working directory
 ---
 
 ## 🚀 How to Run 
-1. **Compress**: Compress it into a Zip package on GitHub and place it on your destop.
-2. **Decompress**: Extract the compressed package on the destop.
+1. **Compress**: Compress it into a Zip package on GitHub and place it on your desktop.
+2. **Decompress**: Extract the compressed package on the desktop.
 3. **Open the Terminal**: Open your Terminal (macOS/Linux) or Command Prompt (Windows).
 4. **Navigate to the Directory**: Use the `cd` command to enter the folder containing the above-mentioned files. ```bash
 cd /your/project/path ```
