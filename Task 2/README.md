@@ -22,7 +22,7 @@ This project provides two core Python classes for efficiently managing and opera
 3. **Navigate to the Directory**: Use the `cd` command to enter the folder containing the above-mentioned files. ```bash
 cd ...\COMP2090SEF-main\Task 1 ```
 4. Run the built-in test cases
-Each script contains a test block that can be directly executed to verify the functionality: 
+*Each script contains a test block that can be directly executed to verify the functionality: 
 * **Running the Maximum Heap Example** : ```bash
 python MaxHeap.py```
 * **Running the Minimum Heap Example** : ```bash
