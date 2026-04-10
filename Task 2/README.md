@@ -21,17 +21,13 @@ This project provides two core Python classes for efficiently managing and opera
 2. **Open the Terminal**: Open your Terminal (macOS/Linux) or Command Prompt (Windows).
 3. **Navigate to the Directory**: Use the `cd` command to enter the folder containing the above-mentioned files. ```bash
 cd ...\COMP2090SEF-main\Task 2 ```
-4. ### 1. 运行内置测试用例
-每个脚本都包含一个测试块，可以直接运行以验证功能：
+4. ### Run the built-in test cases
+Each script contains a test block that can be directly executed to verify the functionality: 
+* **Running the Maximum Heap Example** : ```bash
+python MaxHeap.py```
+* **Running the Minimum Heap Example** : ```bash
+python MinHeap.py```
 
-* **运行最大堆示例**：
-    ```bash
-    python MaxHeap.py
-    ```
-* **运行最小堆示例**：
-    ```bash
-    python MinHeap.py
-    ```
 ---
 
 
