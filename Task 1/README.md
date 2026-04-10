@@ -1,4 +1,7 @@
 # 📚 Library Seat Reservation System 
+
+---
+
 This project is a library seat reservation system with a graphical user interface (GUI) built based on Python and Tkinter. The system implements core functions such as user registration, login, real-time seat viewing, reservation, and countdown reminders, and persists data through local JSON files. 
 
 ---
