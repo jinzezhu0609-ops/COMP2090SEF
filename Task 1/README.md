@@ -1,110 +1,67 @@
-# This is a guide on how to run program
-------------------------------------------
+📚 图书馆座位预约系统 (Library Seat Reservation System)
+这是一个基于 Python 和 Tkinter 构建的带有图形界面 (GUI) 的图书馆座位预约系统。该系统支持用户注册、登录、座位查看、预约、释放座位，以及管理员对系统座位的管理，并通过本地 JSON 文件实现用户数据的持久化存储。
 
-**First, we need to modify the VS Code Settings to make it output in the Terminal panel.**
-* **Step 1:** Open settings
-  * Shortcut key: `Ctrl + ,` (Windows) or `Cmd + ,` (Mac)
-* **Step 2:** Enter in the search box
-  * Plaintext: `code runner run in terminal`
-* **Step 3:** Check the box
-  * Check `Code-runner: Run in Terminal`
-* **Step 4:** Then click the button
-  * Click the play button in the top right corner of the editor and the program will automatically start in the Terminal panel
- 
------------------------------------------
+🛠️ 环境要求 (Prerequisites)
+Python 3.7+: 本项目依赖于 Python 3 环境，请确保你的电脑上已经正确安装。
 
-**Second, we find gui.py, and then click "run code"**
-* We will see a web page "Library Seat Reservation System GUI" (page content):
-  1. Username (you need to input your name)
-  2. Password (you need to input your password)
-  3. Login (Login after registration)
-  4. Register as Customer (Select the role you need to choose)
-  5. Register as Admin (Select the role you need to choose)
+Tkinter: Python 的标准 GUI 库。在大多数 Windows 和 macOS 的 Python 安装中，它已经默认自带。
 
----------------------------------------
+注：如果你使用的是 Linux (如 Ubuntu)，可能需要手动安装 Tkinter，命令为：sudo apt-get install python3-tk
 
-**Third, we need to enter username and password, and register as customer**
-* Enter username:
-  * e.g. Username: ZHU
-* Enter password:
-  * e.g. Password: 123456
+📁 文件结构 (Project Structure)
+在运行程序之前，请确保以下所有的文件都放置在同一个文件夹目录下：
 
-> ** If you don't enter your name or password, register directly. The system will pop up automatically: Please fill in the username and password you want to register in the input boxes above!
+gui.py - 主图形界面和程序运行入口
 
-> ** If you don't enter your name or password, login directly. The system will pop up automatically: Username and Password cannot be empty!
+system.py - 系统的核心逻辑、数据处理与排序算法
 
-* Click on the "Register as customer":
-  * e.g. You will enter the Customer Dashboard
+user.py - 用户基类及派生类（Customer 和 Admin）
 
---------------------------------------
+seat.py - 座位基类及派生类（StandardSeat 和 ComputerSeat）
 
-**Fourth, we will see Customer Dashboard (content page) and use the functions inside:**
+reservation.py - 预约记录管理及倒计时逻辑
 
-* **View all seats:**
-  When we click on it, we will see 
-  ```text
-  [Standard Desk] Seat 1: Available
-  [Standard Desk] Seat 2: Available
-  [Standard Desk] Seat 3: Available
-  [Computer Seat] Seat 4: Available
-  [Computer Seat] Seat 5: Available 
-* **Reserve a seat:** when we click on it, we will see
-  
-  ```text
-  Available seats: [1,2,3,4,5] 
-  Please enter the seat number you want to reserve:
-🔸Step 1: Please enter the seat number you want to want to reserve (e.g. 1).
+reminder.py - 系统提醒与时间检查模块
 
-🔸Step 2: Click on "OK" (If you click on "Cancel", you will exit this interface).
+user_data.json - 本地数据存储文件。用于保存已注册的账号、密码和角色信息。初始为空 []，表示当前无任何注册用户。
 
-🔸Step 3: You will see "Enter start time (format: 2025-03-04 14:00): " (If you don't see this page, you need to click on the main page again, because this page is hidden on the main page).
+🚀 如何运行 (How to Run)
+打开终端 (Terminal) 或 命令提示符 (Command Prompt)。
 
-🔹 Case 1: If you enter an unreasonable time (e.g. 111), the system will pop up automatically: Invalid time format.
+导航到项目目录：使用 cd 命令进入你存放上述所有代码文件的文件夹。
 
-🔹 Case 2: If you enter past time (e.g. 2025-01-12 00:00), the system will pop up automatically: The start time cannot be the past.
+Bash
+cd 你的/文件/路径
+运行主程序：执行以下命令启动 GUI 界面。
 
-🔹 Case 3: If you enter normal time (e.g. 2026-04-07 01:00), and then click on "OK", you will enter the next page (If you click on "Cancel", you will exit this interface).
+Bash
+python gui.py
+(注：在某些系统如 macOS 或 Linux 上，你可能需要使用 python3 gui.py)
 
-🔸Step 4: You will see "Enter reservation duration(e.g., 10, 20, 30, 60 miniutes): " (Default value is 30).
+💡 首次使用指南 (Getting Started)
+当你成功启动程序后，会看到系统的欢迎和登录界面。
 
-e.g. You can input "10" then click on "OK" (If you click on "Cancel", you will exit this interface).
+注册新账号 (Register)：
 
-🔸Step 5: You will see system message "Reservation successful! ZHU resered seat 1 from 2026-04-07 01:00 to 2026-04-07 01:10(10 min)".
+由于 user_data.json 初始为空，系统中没有任何预设用户。
 
-🔹 Case 1: If the time you have made an appointment is within 5 minutes from now, the system will also pop up automatically: [REMIND] Seat 1 will start soon!.
+请先在输入框中填入你想要的 Username（用户名）和 Password（密码）。
 
-🔹 Case 2: If the time you have made an appointment happens to be the current time, the system will also pop up automatically: [REMIND] Seat 1 reservation time is officially beginning..
+点击 "Register as Customer"（注册为普通顾客）或 "Register as Admin"（注册为管理员）。
 
-💡 Attention: After you have made an appointment, you will see how much time is left until the start or end (With only five minutes left, the system will also pop up automatically: [REMIND] Seat 1 will end soon, please prepare to leave).
+注册成功后，你的账号信息会立刻自动写入并保存在 user_data.json 文件中。下次重启程序时，你可以直接登录。
 
-------------------------------------------
-Release my seat:
-when we click on it, you will see “Your reservations:
-                                   1. ZHU reserved seat 1 from 2026-04-07 01:00 to 2026-04-07 01:10(10 min)[Active]
-                                   Enter the reservation number to release(1,2...):”
-e.g. 🔸Step 1: You can input: 1
+登录系统 (Login)：
 
-     Step 2: Click on the "OK" (If you click on the "Cancel", you will exit this interface)
+使用刚刚注册的账号和密码点击 "Login" 进入对应的控制台 (Dashboard)。
 
-     Step 3: You will see the system will also pop up automatically: Seat 1 has been successfully released!
+体验核心功能 (Features)：
 
------------------------------------------
+系统在每次初始化时会自动生成 5个测试座位（3个普通桌椅，2个电脑座位），你可以点击 "View all seats" 来查看它们。
 
-View my reservations:
-when we click on it,
+尝试输入座位号和预约时间进行 预约 (Reserve a seat)。
 
-🔹Case 1: If you made an appointment but it wasn't released, the system will also pop up automatically: ZHU reserved seat 1 from 2026-04-07 01:00 to 2026-04-07 01:10(10 min)[Active]
-
-🔹Case 2: If you haven't made an appointment or have cancelled it, the system will also pop up automatically: You have no reservation records.
-
-----------------------------------------
-
-Logout：
-when we click on it, you will exit to the login interface.
-
----------------------------------------
-  
-  
+预约成功后，控制台下方会启动实时倒计时 (Timer)，显示距离开始或结束的时间，并在关键节点弹出提示框 (Reminder)。
   
   
   
