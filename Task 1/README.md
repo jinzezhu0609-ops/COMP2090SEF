@@ -1,67 +1,51 @@
-📚 图书馆座位预约系统 (Library Seat Reservation System)
-这是一个基于 Python 和 Tkinter 构建的带有图形界面 (GUI) 的图书馆座位预约系统。该系统支持用户注册、登录、座位查看、预约、释放座位，以及管理员对系统座位的管理，并通过本地 JSON 文件实现用户数据的持久化存储。
+# 📚 Library Seat Reservation System 
+This project is a library seat reservation system with a graphical user interface (GUI) built based on Python and Tkinter. The system implements core functions such as user registration, login, real-time seat viewing, reservation, and countdown reminders, and persists data through local JSON files. 
+---
 
-🛠️ 环境要求 (Prerequisites)
-Python 3.7+: 本项目依赖于 Python 3 环境，请确保你的电脑上已经正确安装。
+## 🛠️ Environment Requirements (Prerequisites) 
+* **Python Version**: 3.7 or higher.
+* **Tkinter Library**: Comes with the Python standard library and no additional installation is required.
+* *For Linux users (such as Ubuntu) who are missing this library, please run*: `sudo apt-get install python3-tk`. 
+---
 
-Tkinter: Python 的标准 GUI 库。在大多数 Windows 和 macOS 的 Python 安装中，它已经默认自带。
+## 📁 Project Structure (Project Structure) 
+Please ensure that the following files are located in the same working directory to ensure the normal operation of the program: 
+| File Name | Type | Function Description |
+| :--- | :--- | :--- |
+| **`gui.py`** | Python | **Main entry point of the program**. It is responsible for the GUI layout, user interaction logic, and the startup of background tasks. |
+| **`system.py`** | Python | **Core Logic Layer**. Manages seat data, JSON read/write, and sorting algorithms (bubble sort/insertion sort). |
+| **`user.py`** | Python | **User Model**. Defines two types of roles, `Customer` and `Admin`, and their attributes. |
+| **`seat.py`** | Python | **Seat Model**. Contains `StandardSeat` (standard seat) and `ComputerSeat` (computer seat). |
+| **`reservation.py`** | Python | **Reservation Management**. Handles the specific time of reservations, duration calculation, and status determination. |
+| **`reminder.py`** | Python | **Message Reminder**. Responsible for generating notification messages when an appointment starts or is about to end. |
+| **`user_data.json`** | JSON | **Local database**. Initially empty `[]`, used to store all registered user account information. |
 
-注：如果你使用的是 Linux (如 Ubuntu)，可能需要手动安装 Tkinter，命令为：sudo apt-get install python3-tk
+---
 
-📁 文件结构 (Project Structure)
-在运行程序之前，请确保以下所有的文件都放置在同一个文件夹目录下：
-
-gui.py - 主图形界面和程序运行入口
-
-system.py - 系统的核心逻辑、数据处理与排序算法
-
-user.py - 用户基类及派生类（Customer 和 Admin）
-
-seat.py - 座位基类及派生类（StandardSeat 和 ComputerSeat）
-
-reservation.py - 预约记录管理及倒计时逻辑
-
-reminder.py - 系统提醒与时间检查模块
-
-user_data.json - 本地数据存储文件。用于保存已注册的账号、密码和角色信息。初始为空 []，表示当前无任何注册用户。
-
-🚀 如何运行 (How to Run)
-打开终端 (Terminal) 或 命令提示符 (Command Prompt)。
-
-导航到项目目录：使用 cd 命令进入你存放上述所有代码文件的文件夹。
-
-Bash
-cd 你的/文件/路径
-运行主程序：执行以下命令启动 GUI 界面。
-
-Bash
+## 🚀 How to Run 
+1. **Open the Terminal**: Open your Terminal (macOS/Linux) or Command Prompt (Windows).
+2. **Navigate to the Directory**: Use the `cd` command to enter the folder containing the above-mentioned files. ```bash
+cd /your/project/path ```
+3. **Start the program**: Execute the following command: ```bash
 python gui.py
-(注：在某些系统如 macOS 或 Linux 上，你可能需要使用 python3 gui.py)
+```
+*(Note: Some systems may require using `python3 gui.py`)*. 
+---
 
-💡 首次使用指南 (Getting Started)
-当你成功启动程序后，会看到系统的欢迎和登录界面。
+## 💡 Usage Guide 
+### 1. Account Preparation
+* **First Use**: Since `user_data.json` is initially empty, you need to register first.
+* **Registration**: Enter your username and password in the login window, and click either **"Register as Customer"** or **"Register as Admin"**.
+* **Login**: After successful registration, log in to the system directly by clicking **"Login"** with your account. 
+### 2. Core Functions
+* **Seat Viewing**: The system presets 5 test seats (3 standard seats and 2 computer seats). You can click "View all seats" on the dashboard to check the real-time status.
+* **Seat Reservation**: Customers can select an available seat and enter the start time (format: `2026-04-10 18:00`) and reservation duration.
+* **Real-time Reminders**: After a successful reservation, a real-time countdown will be displayed at the bottom of the main interface. When there are less than 5 minutes until the reservation starts or ends, a pop-up window will appear to remind you. 
+### 3. Administrator Privileges
+* After logging in, administrators can **add new seats**, **delete idle seats**, and view **all reservation records** in the system. 
+---
 
-注册新账号 (Register)：
-
-由于 user_data.json 初始为空，系统中没有任何预设用户。
-
-请先在输入框中填入你想要的 Username（用户名）和 Password（密码）。
-
-点击 "Register as Customer"（注册为普通顾客）或 "Register as Admin"（注册为管理员）。
-
-注册成功后，你的账号信息会立刻自动写入并保存在 user_data.json 文件中。下次重启程序时，你可以直接登录。
-
-登录系统 (Login)：
-
-使用刚刚注册的账号和密码点击 "Login" 进入对应的控制台 (Dashboard)。
-
-体验核心功能 (Features)：
-
-系统在每次初始化时会自动生成 5个测试座位（3个普通桌椅，2个电脑座位），你可以点击 "View all seats" 来查看它们。
-
-尝试输入座位号和预约时间进行 预约 (Reserve a seat)。
-
-预约成功后，控制台下方会启动实时倒计时 (Timer)，显示距离开始或结束的时间，并在关键节点弹出提示框 (Reminder)。
+> **Hint**: It is recommended to view this file with a Markdown preview-supported editor (such as **VS Code** or **Typora**), for a better effect.
   
   
   
