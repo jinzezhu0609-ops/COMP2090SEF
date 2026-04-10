@@ -45,7 +45,5 @@ python gui.py
 * After logging in, administrators can **add new seats**, **delete idle seats**, and view **all reservation records** in the system. 
 ---
 
-> **Hint**: It is recommended to view this file with a Markdown preview-supported editor (such as **VS Code** or **Typora**), for a better effect.
-  
   
   
