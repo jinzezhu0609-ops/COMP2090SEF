@@ -8,7 +8,7 @@ This project is a library seat reservation system with a graphical user interfac
 * *For Linux users (such as Ubuntu) who are missing this library, please run*: `sudo apt-get install python3-tk`. 
 ---
 
-## 📁 Project Structure (Project Structure) 
+## 📁 Project Structure 
 Please ensure that the following files are located in the same working directory to ensure the normal operation of the program: 
 | File Name | Type | Function Description |
 | :--- | :--- | :--- |
@@ -28,7 +28,7 @@ Please ensure that the following files are located in the same working directory
 cd /your/project/path ```
 3. **Start the program**: Execute the following command: ```bash
 python gui.py
-```
+
 *(Note: Some systems may require using `python3 gui.py`)*. 
 ---
 
