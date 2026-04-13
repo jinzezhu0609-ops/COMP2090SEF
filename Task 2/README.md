@@ -1,5 +1,6 @@
-## Implementation of Python Heap Data Structures (Max-Heap & Min-Heap) 
+## Data Structures (Max-Heap & Min-Heap) & Algorithm (Heap Sort)
 This project consists of two core files, which respectively implement the Max-Heap and Min-Heap. A heap is a special type of complete binary tree and is widely used in priority queues, heap sort, and graph algorithms.
+video link : https://youtu.be/pLZlMFNAQ4c?si=dr-0scWhmyzPC1Xw
 
 ---
 
