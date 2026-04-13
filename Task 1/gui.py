@@ -188,7 +188,7 @@ class LibraryGUI:
             messagebox.showerror("Error", "This seat does not exist or is not available!")
             return
 
-        time_str = simpledialog.askstring("Reservation", "Enter start time (format: 2025-03-04 14:00):")
+        time_str = simpledialog.askstring("Reservation", "Enter start time (format: 2026-03-14 14:00):")
         if not time_str: return
 
         try:
