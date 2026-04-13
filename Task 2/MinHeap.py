@@ -75,4 +75,4 @@ if __name__ == "__main__":
     print(f"The minimum value: {my_heap.get_min()}")           # The minimum value: 1
     my_heap.insert(15)
     print(f"Output the object: {my_heap.arr}")                 # Output the object: [None, 1, 4, 2, 5, 10, 3, 15]
-    print(f"The object after deleting the minimum value: {my_heap.remove_min()}")       # The object after deleting the minimum value: 1
+    print(f"Deleting the minimum value: {my_heap.remove_min()}")       # Deleting the minimum value: 1
