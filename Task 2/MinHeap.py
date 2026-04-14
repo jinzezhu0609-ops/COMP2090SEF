@@ -34,6 +34,7 @@ class MinHeap:
         return temp_arr[1:]
 
     def get_min(self):
+        '''Get the minimum value'''
         if len(self.arr) <= 1:  
             return None
         return self.arr[1]      
@@ -50,7 +51,8 @@ class MinHeap:
             else:
                 break
 
-    def remove_min(self):     
+    def remove_min(self):
+         """Remove and return the root (minimum) element""" 
         if len(self.arr) <= 1:  # Cannot delete when the heap is empty
             print("The heap is empty and deletion failed")
             return None
