@@ -28,6 +28,8 @@ Each script contains a test block that can be directly executed to verify the fu
 python MaxHeap.py```
 * **Running the Minimum Heap Example** : ```bash
 python MinHeap.py```
+* **Running the BuildHeap & HeapSort** : ```bash
+python BuildHeap_HeapSort.py```
 
 ---
 
