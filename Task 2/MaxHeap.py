@@ -18,7 +18,7 @@ class MaxHeap:
         r = 2 * i + 1      # Right subset
         
        # Check if children are larger than current node
-        if l <= n and arr[i] < arr[l]:   
+        if l <= n and arr[largest] < arr[l]:   
             largest = l 
         if r <= n and arr[largest] < arr[r]:  
             largest = r
