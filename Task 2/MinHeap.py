@@ -16,7 +16,7 @@ class MinHeap:
         smallest = i       # Suppose i is the smallest
         l = 2 * i          # Left subset
         r = 2 * i + 1      # Right subset
-        if l <= n and arr[i] > arr[l]:   
+        if l <= n and arr[smallest] > arr[l]:   
             smallest = l 
         if r <= n and arr[smallest] > arr[r]: 
             smallest = r
