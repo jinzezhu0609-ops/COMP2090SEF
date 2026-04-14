@@ -37,7 +37,8 @@ class MaxHeap:
             self.heapify(temp_arr, i - 1, 1) 
         return temp_arr[1:]
 
-    def get_max(self):    
+    def get_max(self):
+        '''Get the maximum value'''
         if len(self.arr) <= 1:  
             return None
         return self.arr[1]      
