@@ -20,15 +20,15 @@ Video Link : https://youtu.be/pLZlMFNAQ4c?si=dr-0scWhmyzPC1Xw
 
 1. **Download and Unzip**: Download the zip filie from Github, unzip and place the file to your chosen folder.
 2. **Open the Terminal**: Open your Terminal (macOS/Linux) or Command Prompt (Windows).
-3. **Navigate to the Directory**: Use the `cd` command to enter the folder containing the above-mentioned files. ```bash
+3. **Navigate to the Directory**: Use the `cd` command to enter the folder containing the above-mentioned files. ```
 cd ...\COMP2090SEF-main\Task 2 ```
 4. **Run the built-in test cases**.
 Each script contains a test block that can be directly executed to verify the functionality: 
-* **Running the Maximum Heap Example** : ```bash
+* **Running the Maximum Heap Example** : ```
 python MaxHeap.py```
-* **Running the Minimum Heap Example** : ```bash
+* **Running the Minimum Heap Example** : ```
 python MinHeap.py```
-* **Running the BuildHeap & HeapSort** : ```bash
+* **Running the BuildHeap & HeapSort** : ```
 python BuildHeap_HeapSort.py```
 
 ---
