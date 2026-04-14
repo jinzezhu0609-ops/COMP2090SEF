@@ -52,7 +52,7 @@ class MinHeap:
                 break
 
     def remove_min(self):
-         """Remove and return the root (minimum) element""" 
+        """Remove and return the root (minimum) element""" 
         if len(self.arr) <= 1:  # Cannot delete when the heap is empty
             print("The heap is empty and deletion failed")
             return None
