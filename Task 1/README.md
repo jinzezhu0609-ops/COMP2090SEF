@@ -28,9 +28,9 @@ Please ensure that the following files are located in the same working directory
 ## How to Run 
 1. **Download and Unzip**: Download the zip filie from Github, unzip and place the file to your chosen folder.
 2. **Open the Terminal**: Open your Terminal (macOS/Linux) or Command Prompt (Windows).
-3. **Navigate to the Directory**: Use the `cd` command to enter the folder containing the above-mentioned files. ```bash
+3. **Navigate to the Directory**: Use the `cd` command to enter the folder containing the above-mentioned files. ```
 cd ...\COMP2090SEF-main\Task 1 ```
-4. **Start the program**: Execute the following command: ```bash
+4. **Start the program**: Execute the following command: ```
 python gui.py ```
 
 *(Note: Some systems may require using `python3 gui.py`)*. 
