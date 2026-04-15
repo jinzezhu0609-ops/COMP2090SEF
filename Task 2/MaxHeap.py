@@ -81,5 +81,5 @@ if __name__ == "__main__":
     my_heap.get_max()
     print(f"The maximum value: {my_heap.get_max()}")           # The maximum value: 10
     my_heap.insert(15)
-    print(f"Output the object: {my_heap.arr}")                 # Output the object: [None, 15, 5, 10, 4, 1, 2, 3]
+    print(f"Output the object after inserting a new element(15): {my_heap.arr}")       # Output the object after inserting a new element(15): [None, 15, 5, 10, 4, 1, 2, 3]
     print(f"Deleting the maximum value: {my_heap.remove_max()}")       # Deleting the maximum value: 15
